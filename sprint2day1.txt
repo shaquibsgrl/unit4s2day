@@ -1,0 +1,1021 @@
+C:\Users\abc>mongo
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("220bd58f-4071-41e0-a114-b2fc080040e3") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-03-07T19:32:02.273+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use assignment
+switched to db assignment
+> show collecton
+uncaught exception: Error: don't know how to show [collecton] :
+shellHelper.show@src/mongo/shell/utils.js:1211:11
+shellHelper@src/mongo/shell/utils.js:838:15
+@(shellhelp2):1:1
+> show collections
+> db
+assignment
+> db.createcollection("users")
+uncaught exception: TypeError: db.createcollection is not a function :
+@(shell):1:1
+> db.create collection("users")
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:10
+> db.createCollection("users")
+{ "ok" : 1 }
+> db.users.insert({"first_name":"abhishek","last_name":"agarwal","email":"abhishek@gmail.com","gender":"male","ip_address":127.001.20,"age":23})
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:128
+> db.users.insert({"first_name":"abhishek","last_name":"agarwal","email":"abhishek@gmail.com","gender":"male","ip_address":127.001.20,"age":23});
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:128
+> db.users.insert({"first_name":"abhishek","last_name":"agarwal","email":"abhishek@gmail.com","gender":"male","ip_address":"127.001.20","age":"23"});
+WriteResult({ "nInserted" : 1 })
+> db.users.find()
+{ "_id" : ObjectId("622652dab8dd9170a978c07f"), "first_name" : "abhishek", "last_name" : "agarwal", "email" : "abhishek@gmail.com", "gender" : "male", "ip_address" : "127.001.20", "age" : "23" }
+> db.users.insert({"first_name":"ashish","last_name":"agarwal","email":"ashish@gmail.com","gender":"male","ip_address":"127.001.21","age":"23"})
+WriteResult({ "nInserted" : 1 })
+> db.users.find({})
+{ "_id" : ObjectId("622652dab8dd9170a978c07f"), "first_name" : "abhishek", "last_name" : "agarwal", "email" : "abhishek@gmail.com", "gender" : "male", "ip_address" : "127.001.20", "age" : "23" }
+{ "_id" : ObjectId("62265353b8dd9170a978c080"), "first_name" : "ashish", "last_name" : "agarwal", "email" : "ashish@gmail.com", "gender" : "male", "ip_address" : "127.001.21", "age" : "23" }
+> db.users.insertMany({"first_name":"babai","last_name":"haque","email":"haque@gmail.com","gender":"male","ip_address":"127.001.22","age":"23"},{"first_name":"aamir","last_name":"hussain","email":"aamir@gmail.com","gender":"male","ip_address":"127.001.23","age":"23"}]);
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:265
+> db.users.insertMany([{"first_name":"babai","last_name":"haque","email":"haque@gmail.com","gender":"male","ip_address":"127.001.22","age":"23"},{"first_name":"aamir","last_name":"hussain","email":"aamir@gmail.com","gender":"male","ip_address":"127.001.23","age":"23"}]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6226589cb8dd9170a978c081"),
+                ObjectId("6226589cb8dd9170a978c082")
+        ]
+}
+> db.users.find({})
+{ "_id" : ObjectId("622652dab8dd9170a978c07f"), "first_name" : "abhishek", "last_name" : "agarwal", "email" : "abhishek@gmail.com", "gender" : "male", "ip_address" : "127.001.20", "age" : "23" }
+{ "_id" : ObjectId("62265353b8dd9170a978c080"), "first_name" : "ashish", "last_name" : "agarwal", "email" : "ashish@gmail.com", "gender" : "male", "ip_address" : "127.001.21", "age" : "23" }
+{ "_id" : ObjectId("6226589cb8dd9170a978c081"), "first_name" : "babai", "last_name" : "haque", "email" : "haque@gmail.com", "gender" : "male", "ip_address" : "127.001.22", "age" : "23" }
+{ "_id" : ObjectId("6226589cb8dd9170a978c082"), "first_name" : "aamir", "last_name" : "hussain", "email" : "aamir@gmail.com", "gender" : "male", "ip_address" : "127.001.23", "age" : "23" }
+> db.users.insertMany([{"first_name":"akash","last_name":"yadav","email":"akash@gmail.com","gender":"male","ip_address":"127.001.24","age":"24"},{"first_name":"surya","last_name":"bansal","email":"surya@gmail.com","gender":"male","ip_address":"127.001.25","age":"24"},{"first_name":"priya","last_name":"singh","email":"priya@gmail.com","gender":"female","ip_address":"127.20.25","age":"25"},{"first_name":"anjali","last_name":"gautam","email":"anjali@gmail.com","gender":"female","ip_address":"127.20.26","age":"25"},{"first_name":"priyanka","last_name":"singh","email":"priyanka@gmail.com","gender":"female","ip_address":"120.20.27","age":"26"},{"first_name":"amrita","last_name":"goel","email":"amrita@gmail.com","gender":"female","ip_address":"120.27.28","age":"27"}]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62265d0ab8dd9170a978c083"),
+                ObjectId("62265d0ab8dd9170a978c084"),
+                ObjectId("62265d0ab8dd9170a978c085"),
+                ObjectId("62265d0ab8dd9170a978c086"),
+                ObjectId("62265d0ab8dd9170a978c087"),
+                ObjectId("62265d0ab8dd9170a978c088")
+        ]
+}
+> db.users.find({})
+{ "_id" : ObjectId("622652dab8dd9170a978c07f"), "first_name" : "abhishek", "last_name" : "agarwal", "email" : "abhishek@gmail.com", "gender" : "male", "ip_address" : "127.001.20", "age" : "23" }
+{ "_id" : ObjectId("62265353b8dd9170a978c080"), "first_name" : "ashish", "last_name" : "agarwal", "email" : "ashish@gmail.com", "gender" : "male", "ip_address" : "127.001.21", "age" : "23" }
+{ "_id" : ObjectId("6226589cb8dd9170a978c081"), "first_name" : "babai", "last_name" : "haque", "email" : "haque@gmail.com", "gender" : "male", "ip_address" : "127.001.22", "age" : "23" }
+{ "_id" : ObjectId("6226589cb8dd9170a978c082"), "first_name" : "aamir", "last_name" : "hussain", "email" : "aamir@gmail.com", "gender" : "male", "ip_address" : "127.001.23", "age" : "23" }
+{ "_id" : ObjectId("62265d0ab8dd9170a978c083"), "first_name" : "akash", "last_name" : "yadav", "email" : "akash@gmail.com", "gender" : "male", "ip_address" : "127.001.24", "age" : "24" }
+{ "_id" : ObjectId("62265d0ab8dd9170a978c084"), "first_name" : "surya", "last_name" : "bansal", "email" : "surya@gmail.com", "gender" : "male", "ip_address" : "127.001.25", "age" : "24" }
+{ "_id" : ObjectId("62265d0ab8dd9170a978c085"), "first_name" : "priya", "last_name" : "singh", "email" : "priya@gmail.com", "gender" : "female", "ip_address" : "127.20.25", "age" : "25" }
+{ "_id" : ObjectId("62265d0ab8dd9170a978c086"), "first_name" : "anjali", "last_name" : "gautam", "email" : "anjali@gmail.com", "gender" : "female", "ip_address" : "127.20.26", "age" : "25" }
+{ "_id" : ObjectId("62265d0ab8dd9170a978c087"), "first_name" : "priyanka", "last_name" : "singh", "email" : "priyanka@gmail.com", "gender" : "female", "ip_address" : "120.20.27", "age" : "26" }
+{ "_id" : ObjectId("62265d0ab8dd9170a978c088"), "first_name" : "amrita", "last_name" : "goel", "email" : "amrita@gmail.com", "gender" : "female", "ip_address" : "120.27.28", "age" : "27" }
+> db.users.find({}).pretty()
+{
+        "_id" : ObjectId("622652dab8dd9170a978c07f"),
+        "first_name" : "abhishek",
+        "last_name" : "agarwal",
+        "email" : "abhishek@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.20",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("62265353b8dd9170a978c080"),
+        "first_name" : "ashish",
+        "last_name" : "agarwal",
+        "email" : "ashish@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.21",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("6226589cb8dd9170a978c081"),
+        "first_name" : "babai",
+        "last_name" : "haque",
+        "email" : "haque@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.22",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("6226589cb8dd9170a978c082"),
+        "first_name" : "aamir",
+        "last_name" : "hussain",
+        "email" : "aamir@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.23",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c083"),
+        "first_name" : "akash",
+        "last_name" : "yadav",
+        "email" : "akash@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.24",
+        "age" : "24"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c084"),
+        "first_name" : "surya",
+        "last_name" : "bansal",
+        "email" : "surya@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.25",
+        "age" : "24"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c085"),
+        "first_name" : "priya",
+        "last_name" : "singh",
+        "email" : "priya@gmail.com",
+        "gender" : "female",
+        "ip_address" : "127.20.25",
+        "age" : "25"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c086"),
+        "first_name" : "anjali",
+        "last_name" : "gautam",
+        "email" : "anjali@gmail.com",
+        "gender" : "female",
+        "ip_address" : "127.20.26",
+        "age" : "25"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c087"),
+        "first_name" : "priyanka",
+        "last_name" : "singh",
+        "email" : "priyanka@gmail.com",
+        "gender" : "female",
+        "ip_address" : "120.20.27",
+        "age" : "26"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c088"),
+        "first_name" : "amrita",
+        "last_name" : "goel",
+        "email" : "amrita@gmail.com",
+        "gender" : "female",
+        "ip_address" : "120.27.28",
+        "age" : "27"
+}
+> db.users.findOne({"first_name":"anjali"})
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c086"),
+        "first_name" : "anjali",
+        "last_name" : "gautam",
+        "email" : "anjali@gmail.com",
+        "gender" : "female",
+        "ip_address" : "127.20.26",
+        "age" : "25"
+}
+> db.users.uptade({"first_name":"amrita"},{$set:{"age":"20"}})
+uncaught exception: TypeError: db.users.uptade is not a function :
+@(shell):1:1
+> db.users.update({"first_name":"amrita"},{$set:{"age":"20"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.updateMany({"age":"25"},{$set:{"eligible":"true"}})
+uncaught exception: TypeError: db.updateMany is not a function :
+@(shell):1:1
+> db.users.updateMany({"age":"25"},{$set:{"eligible":"true"}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+> db.users.find({}).pretty()
+{
+        "_id" : ObjectId("622652dab8dd9170a978c07f"),
+        "first_name" : "abhishek",
+        "last_name" : "agarwal",
+        "email" : "abhishek@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.20",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("62265353b8dd9170a978c080"),
+        "first_name" : "ashish",
+        "last_name" : "agarwal",
+        "email" : "ashish@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.21",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("6226589cb8dd9170a978c081"),
+        "first_name" : "babai",
+        "last_name" : "haque",
+        "email" : "haque@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.22",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("6226589cb8dd9170a978c082"),
+        "first_name" : "aamir",
+        "last_name" : "hussain",
+        "email" : "aamir@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.23",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c083"),
+        "first_name" : "akash",
+        "last_name" : "yadav",
+        "email" : "akash@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.24",
+        "age" : "24"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c084"),
+        "first_name" : "surya",
+        "last_name" : "bansal",
+        "email" : "surya@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.25",
+        "age" : "24"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c085"),
+        "first_name" : "priya",
+        "last_name" : "singh",
+        "email" : "priya@gmail.com",
+        "gender" : "female",
+        "ip_address" : "127.20.25",
+        "age" : "25",
+        "eligible" : "true"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c086"),
+        "first_name" : "anjali",
+        "last_name" : "gautam",
+        "email" : "anjali@gmail.com",
+        "gender" : "female",
+        "ip_address" : "127.20.26",
+        "age" : "25",
+        "eligible" : "true"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c087"),
+        "first_name" : "priyanka",
+        "last_name" : "singh",
+        "email" : "priyanka@gmail.com",
+        "gender" : "female",
+        "ip_address" : "120.20.27",
+        "age" : "26"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c088"),
+        "first_name" : "amrita",
+        "last_name" : "goel",
+        "email" : "amrita@gmail.com",
+        "gender" : "female",
+        "ip_address" : "120.27.28",
+        "age" : "20"
+}
+> db.users.remove({"first_name":"priyanka"})
+WriteResult({ "nRemoved" : 1 })
+> db.users.find({}.pretty()
+... db.users.find({}).pretty()
+...
+... db.users.find({}).pretty()
+...
+... ^C
+
+> db.users.find({}).pretty()
+{
+        "_id" : ObjectId("622652dab8dd9170a978c07f"),
+        "first_name" : "abhishek",
+        "last_name" : "agarwal",
+        "email" : "abhishek@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.20",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("62265353b8dd9170a978c080"),
+        "first_name" : "ashish",
+        "last_name" : "agarwal",
+        "email" : "ashish@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.21",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("6226589cb8dd9170a978c081"),
+        "first_name" : "babai",
+        "last_name" : "haque",
+        "email" : "haque@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.22",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("6226589cb8dd9170a978c082"),
+        "first_name" : "aamir",
+        "last_name" : "hussain",
+        "email" : "aamir@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.23",
+        "age" : "23"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c083"),
+        "first_name" : "akash",
+        "last_name" : "yadav",
+        "email" : "akash@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.24",
+        "age" : "24"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c084"),
+        "first_name" : "surya",
+        "last_name" : "bansal",
+        "email" : "surya@gmail.com",
+        "gender" : "male",
+        "ip_address" : "127.001.25",
+        "age" : "24"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c085"),
+        "first_name" : "priya",
+        "last_name" : "singh",
+        "email" : "priya@gmail.com",
+        "gender" : "female",
+        "ip_address" : "127.20.25",
+        "age" : "25",
+        "eligible" : "true"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c086"),
+        "first_name" : "anjali",
+        "last_name" : "gautam",
+        "email" : "anjali@gmail.com",
+        "gender" : "female",
+        "ip_address" : "127.20.26",
+        "age" : "25",
+        "eligible" : "true"
+}
+{
+        "_id" : ObjectId("62265d0ab8dd9170a978c088"),
+        "first_name" : "amrita",
+        "last_name" : "goel",
+        "email" : "amrita@gmail.com",
+        "gender" : "female",
+        "ip_address" : "120.27.28",
+        "age" : "20"
+}
+> Microsoft Windows [Version 10.0.19044.1288]
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:10
+> (c) Microsoft Corporation. All rights reserved.
+...
+... C:\Users\abc>mongo
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:4
+> MongoDB shell version v5.0.6
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:8
+> connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+... Implicit session: session { "id" : UUID("220bd58f-4071-41e0-a114-b2fc080040e3") }
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:11
+> MongoDB server version: 5.0.6
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:8
+> ================
+... Warning: the "mongo" shell has been superseded by "mongosh",
+... which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+uncaught exception: SyntaxError: expected expression, got '===' :
+@(shell):1:0
+> an upcoming release.
+... For installation instructions, see
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:3
+> https://docs.mongodb.com/mongodb-shell/install/
+... ================
+... ---
+... The server generated these startup warnings when booting:
+...         2022-03-07T19:32:02.273+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+uncaught exception: SyntaxError: expected expression, got '===' :
+@(shell):2:0
+> ---
+... ---
+...         Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+uncaught exception: SyntaxError: expected expression, got '-' :
+@(shell):1:2
+>         metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+...
+...         The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:8
+>         and anyone you share the URL with. MongoDB may use this information to make product
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:4
+>         improvements and to suggest MongoDB products and deployment options to you.
+...
+...         To enable free monitoring, run the following command: db.enableFreeMonitoring()
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:13
+>         To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:3
+> ---
+... > show dbs
+uncaught exception: SyntaxError: expected expression, got '-' :
+@(shell):1:2
+> admin   0.000GB
+uncaught exception: SyntaxError: identifier starts immediately after numeric literal :
+@(shell):1:8
+> config  0.000GB
+uncaught exception: SyntaxError: identifier starts immediately after numeric literal :
+@(shell):1:8
+> local   0.000GB
+uncaught exception: SyntaxError: identifier starts immediately after numeric literal :
+@(shell):1:8
+> > use assignment
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> switched to db assignment
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:9
+> > show collecton
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> uncaught exception: Error: don't know how to show [collecton] :
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:9
+> shellHelper.show@src/mongo/shell/utils.js:1211:11
+uncaught exception: SyntaxError: illegal character :
+@(shell):1:16
+> shellHelper@src/mongo/shell/utils.js:838:15
+uncaught exception: SyntaxError: illegal character :
+@(shell):1:11
+> @(shellhelp2):1:1
+uncaught exception: SyntaxError: illegal character :
+@(shell):1:0
+> > show collections
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> > db
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> assignment
+uncaught exception: ReferenceError: assignment is not defined :
+@(shell):1:1
+> > db.createcollection("users")
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> uncaught exception: TypeError: db.createcollection is not a function :
+... @(shell):1:1
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:9
+> > db.create collection("users")
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> uncaught exception: SyntaxError: unexpected token: identifier :
+... @(shell):1:10
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:9
+> > db.createCollection("users")
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> { "ok" : 1 }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:7
+> > db.users.insert({"first_name":"abhishek","last_name":"agarwal","email":"abhishek@gmail.com","gender":"male","ip_address":127.001.20,"age":23})
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> uncaught exception: SyntaxError: missing } after property list :
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:9
+> @(shell):1:128
+uncaught exception: SyntaxError: illegal character :
+@(shell):1:0
+> > db.users.insert({"first_name":"abhishek","last_name":"agarwal","email":"abhishek@gmail.com","gender":"male","ip_address":127.001.20,"age":23});
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> uncaught exception: SyntaxError: missing } after property list :
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:9
+> @(shell):1:128
+uncaught exception: SyntaxError: illegal character :
+@(shell):1:0
+> > db.users.insert({"first_name":"abhishek","last_name":"agarwal","email":"abhishek@gmail.com","gender":"male","ip_address":"127.001.20","age":"23"});
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> WriteResult({ "nInserted" : 1 })
+uncaught exception: TypeError: bulkResult.upserted is undefined :
+WriteResult@src/mongo/shell/bulk_api.js:117:1
+WriteResult@src/mongo/shell/bulk_api.js:108:20
+@(shell):1:1
+> > db.users.find()
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> { "_id" : ObjectId("622652dab8dd9170a978c07f"), "first_name" : "abhishek", "last_name" : "agarwal", "email" : "abhishek@gmail.com", "gender" : "male", "ip_address" : "127.001.20", "age" : "23" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> > db.users.insert({"first_name":"ashish","last_name":"agarwal","email":"ashish@gmail.com","gender":"male","ip_address":"127.001.21","age":"23"})
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> WriteResult({ "nInserted" : 1 })
+uncaught exception: TypeError: bulkResult.upserted is undefined :
+WriteResult@src/mongo/shell/bulk_api.js:117:1
+WriteResult@src/mongo/shell/bulk_api.js:108:20
+@(shell):1:1
+> > db.users.find({})
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> { "_id" : ObjectId("622652dab8dd9170a978c07f"), "first_name" : "abhishek", "last_name" : "agarwal", "email" : "abhishek@gmail.com", "gender" : "male", "ip_address" : "127.001.20", "age" : "23" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("62265353b8dd9170a978c080"), "first_name" : "ashish", "last_name" : "agarwal", "email" : "ashish@gmail.com", "gender" : "male", "ip_address" : "127.001.21", "age" : "23" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> > db.users.insertMany({"first_name":"babai","last_name":"haque","email":"haque@gmail.com","gender":"male","ip_address":"127.001.22","age":"23"},{"first_name":"aamir","last_name":"hussain","email":"aamir@gmail.com","gender":"male","ip_address":"127.001.23","age":"23"}]);
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> uncaught exception: SyntaxError: missing ) after argument list :
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:9
+> @(shell):1:265
+uncaught exception: SyntaxError: illegal character :
+@(shell):1:0
+> > db.users.insertMany([{"first_name":"babai","last_name":"haque","email":"haque@gmail.com","gender":"male","ip_address":"127.001.22","age":"23"},{"first_name":"aamir","last_name":"hussain","email":"aamir@gmail.com","gender":"male","ip_address":"127.001.23","age":"23"}]);
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> {
+...         "acknowledged" : true,
+...         "insertedIds" : [
+...                 ObjectId("6226589cb8dd9170a978c081"),
+...                 ObjectId("6226589cb8dd9170a978c082")
+...         ]
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:23
+> > db.users.find({})
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> { "_id" : ObjectId("622652dab8dd9170a978c07f"), "first_name" : "abhishek", "last_name" : "agarwal", "email" : "abhishek@gmail.com", "gender" : "male", "ip_address" : "127.001.20", "age" : "23" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("62265353b8dd9170a978c080"), "first_name" : "ashish", "last_name" : "agarwal", "email" : "ashish@gmail.com", "gender" : "male", "ip_address" : "127.001.21", "age" : "23" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("6226589cb8dd9170a978c081"), "first_name" : "babai", "last_name" : "haque", "email" : "haque@gmail.com", "gender" : "male", "ip_address" : "127.001.22", "age" : "23" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("6226589cb8dd9170a978c082"), "first_name" : "aamir", "last_name" : "hussain", "email" : "aamir@gmail.com", "gender" : "male", "ip_address" : "127.001.23", "age" : "23" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> > db.users.insertMany([{"first_name":"akash","last_name":"yadav","email":"akash@gmail.com","gender":"male","ip_address":"127.001.24","age":"24"},{"first_name":"surya","last_name":"bansal","email":"surya@gmail.com","gender":"male","ip_address":"127.001.25","age":"24"},{"first_name":"priya","last_name":"singh","email":"priya@gmail.com","gender":"female","ip_address":"127.20.25","age":"25"},{"first_name":"anjali","last_name":"gautam","email":"anjali@gmail.com","gender":"female","ip_address":"127.20.26","age":"25"},{"first_name":"priyanka","last_name":"singh","email":"priyanka@gmail.com","gender":"female","ip_address":"120.20.27","age":"26"},{"first_name":"amrita","last_name":"goel","email":"amrita@gmail.com","gender":"female","ip_address":"120.27.28","age":"27"}]);
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> {
+...         "acknowledged" : true,
+...         "insertedIds" : [
+...                 ObjectId("62265d0ab8dd9170a978c083"),
+...                 ObjectId("62265d0ab8dd9170a978c084"),
+...                 ObjectId("62265d0ab8dd9170a978c085"),
+...                 ObjectId("62265d0ab8dd9170a978c086"),
+...                 ObjectId("62265d0ab8dd9170a978c087"),
+...                 ObjectId("62265d0ab8dd9170a978c088")
+...         ]
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:23
+> > db.users.find({})
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> { "_id" : ObjectId("622652dab8dd9170a978c07f"), "first_name" : "abhishek", "last_name" : "agarwal", "email" : "abhishek@gmail.com", "gender" : "male", "ip_address" : "127.001.20", "age" : "23" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("62265353b8dd9170a978c080"), "first_name" : "ashish", "last_name" : "agarwal", "email" : "ashish@gmail.com", "gender" : "male", "ip_address" : "127.001.21", "age" : "23" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("6226589cb8dd9170a978c081"), "first_name" : "babai", "last_name" : "haque", "email" : "haque@gmail.com", "gender" : "male", "ip_address" : "127.001.22", "age" : "23" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("6226589cb8dd9170a978c082"), "first_name" : "aamir", "last_name" : "hussain", "email" : "aamir@gmail.com", "gender" : "male", "ip_address" : "127.001.23", "age" : "23" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("62265d0ab8dd9170a978c083"), "first_name" : "akash", "last_name" : "yadav", "email" : "akash@gmail.com", "gender" : "male", "ip_address" : "127.001.24", "age" : "24" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("62265d0ab8dd9170a978c084"), "first_name" : "surya", "last_name" : "bansal", "email" : "surya@gmail.com", "gender" : "male", "ip_address" : "127.001.25", "age" : "24" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("62265d0ab8dd9170a978c085"), "first_name" : "priya", "last_name" : "singh", "email" : "priya@gmail.com", "gender" : "female", "ip_address" : "127.20.25", "age" : "25" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("62265d0ab8dd9170a978c086"), "first_name" : "anjali", "last_name" : "gautam", "email" : "anjali@gmail.com", "gender" : "female", "ip_address" : "127.20.26", "age" : "25" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("62265d0ab8dd9170a978c087"), "first_name" : "priyanka", "last_name" : "singh", "email" : "priyanka@gmail.com", "gender" : "female", "ip_address" : "120.20.27", "age" : "26" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> { "_id" : ObjectId("62265d0ab8dd9170a978c088"), "first_name" : "amrita", "last_name" : "goel", "email" : "amrita@gmail.com", "gender" : "female", "ip_address" : "120.27.28", "age" : "27" }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:8
+> > db.users.find({}).pretty()
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> {
+...         "_id" : ObjectId("622652dab8dd9170a978c07f"),
+...         "first_name" : "abhishek",
+...         "last_name" : "agarwal",
+...         "email" : "abhishek@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.20",
+...         "age" : "23"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265353b8dd9170a978c080"),
+...         "first_name" : "ashish",
+...         "last_name" : "agarwal",
+...         "email" : "ashish@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.21",
+...         "age" : "23"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("6226589cb8dd9170a978c081"),
+...         "first_name" : "babai",
+...         "last_name" : "haque",
+...         "email" : "haque@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.22",
+...         "age" : "23"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("6226589cb8dd9170a978c082"),
+...         "first_name" : "aamir",
+...         "last_name" : "hussain",
+...         "email" : "aamir@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.23",
+...         "age" : "23"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c083"),
+...         "first_name" : "akash",
+...         "last_name" : "yadav",
+...         "email" : "akash@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.24",
+...         "age" : "24"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c084"),
+...         "first_name" : "surya",
+...         "last_name" : "bansal",
+...         "email" : "surya@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.25",
+...         "age" : "24"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c085"),
+...         "first_name" : "priya",
+...         "last_name" : "singh",
+...         "email" : "priya@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "127.20.25",
+...         "age" : "25"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c086"),
+...         "first_name" : "anjali",
+...         "last_name" : "gautam",
+...         "email" : "anjali@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "127.20.26",
+...         "age" : "25"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c087"),
+...         "first_name" : "priyanka",
+...         "last_name" : "singh",
+...         "email" : "priyanka@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "120.20.27",
+...         "age" : "26"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c088"),
+...         "first_name" : "amrita",
+...         "last_name" : "goel",
+...         "email" : "amrita@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "120.27.28",
+...         "age" : "27"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> > db.users.findOne({"first_name":"anjali"})
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c086"),
+...         "first_name" : "anjali",
+...         "last_name" : "gautam",
+...         "email" : "anjali@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "127.20.26",
+...         "age" : "25"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> > db.users.uptade({"first_name":"amrita"},{$set:{"age":"20"}})
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> uncaught exception: TypeError: db.users.uptade is not a function :
+... @(shell):1:1
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:9
+> > db.users.update({"first_name":"amrita"},{$set:{"age":"20"}})
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+uncaught exception: TypeError: bulkResult.upserted is undefined :
+WriteResult@src/mongo/shell/bulk_api.js:117:1
+WriteResult@src/mongo/shell/bulk_api.js:108:20
+@(shell):1:1
+> > db.updateMany({"age":"25"},{$set:{"eligible":"true"}})
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> uncaught exception: TypeError: db.updateMany is not a function :
+... @(shell):1:1
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:9
+> > db.users.updateMany({"age":"25"},{$set:{"eligible":"true"}})
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> { "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):1:17
+> > db.users.find({}).pretty()
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> {
+...         "_id" : ObjectId("622652dab8dd9170a978c07f"),
+...         "first_name" : "abhishek",
+...         "last_name" : "agarwal",
+...         "email" : "abhishek@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.20",
+...         "age" : "23"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265353b8dd9170a978c080"),
+...         "first_name" : "ashish",
+...         "last_name" : "agarwal",
+...         "email" : "ashish@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.21",
+...         "age" : "23"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("6226589cb8dd9170a978c081"),
+...         "first_name" : "babai",
+...         "last_name" : "haque",
+...         "email" : "haque@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.22",
+...         "age" : "23"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("6226589cb8dd9170a978c082"),
+...         "first_name" : "aamir",
+...         "last_name" : "hussain",
+...         "email" : "aamir@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.23",
+...         "age" : "23"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c083"),
+...         "first_name" : "akash",
+...         "last_name" : "yadav",
+...         "email" : "akash@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.24",
+...         "age" : "24"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c084"),
+...         "first_name" : "surya",
+...         "last_name" : "bansal",
+...         "email" : "surya@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.25",
+...         "age" : "24"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c085"),
+...         "first_name" : "priya",
+...         "last_name" : "singh",
+...         "email" : "priya@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "127.20.25",
+...         "age" : "25",
+...         "eligible" : "true"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c086"),
+...         "first_name" : "anjali",
+...         "last_name" : "gautam",
+...         "email" : "anjali@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "127.20.26",
+...         "age" : "25",
+...         "eligible" : "true"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c087"),
+...         "first_name" : "priyanka",
+...         "last_name" : "singh",
+...         "email" : "priyanka@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "120.20.27",
+...         "age" : "26"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c088"),
+...         "first_name" : "amrita",
+...         "last_name" : "goel",
+...         "email" : "amrita@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "120.27.28",
+...         "age" : "20"
+... }
+uncaught exception: SyntaxError: unexpected token: ':' :
+@(shell):2:14
+> > db.users.remove({"first_name":"priyanka"})
+uncaught exception: SyntaxError: expected expression, got '>' :
+@(shell):1:0
+> WriteResult({ "nRemoved" : 1 })
+uncaught exception: TypeError: bulkResult.upserted is undefined :
+WriteResult@src/mongo/shell/bulk_api.js:117:1
+WriteResult@src/mongo/shell/bulk_api.js:108:20
+@(shell):1:1
+> > db.users.find({}.pretty()
+... ... db.users.find({}).pretty()
+... ...
+... ... db.users.find({}).pretty()
+... ...
+... ... ^C
+...
+... > db.users.find({}).pretty()
+... {
+...         "_id" : ObjectId("622652dab8dd9170a978c07f"),
+...         "first_name" : "abhishek",
+...         "last_name" : "agarwal",
+...         "email" : "abhishek@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.20",
+...         "age" : "23"
+... }
+... {
+...         "_id" : ObjectId("62265353b8dd9170a978c080"),
+...         "first_name" : "ashish",
+...         "last_name" : "agarwal",
+...         "email" : "ashish@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.21",
+...         "age" : "23"
+... }
+... {
+...         "_id" : ObjectId("6226589cb8dd9170a978c081"),
+...         "first_name" : "babai",
+...         "last_name" : "haque",
+...         "email" : "haque@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.22",
+...         "age" : "23"
+... }
+... {
+...         "_id" : ObjectId("6226589cb8dd9170a978c082"),
+...         "first_name" : "aamir",
+...         "last_name" : "hussain",
+...         "email" : "aamir@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.23",
+...         "age" : "23"
+... }
+... {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c083"),
+...         "first_name" : "akash",
+...         "last_name" : "yadav",
+...         "email" : "akash@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.24",
+...         "age" : "24"
+... }
+... {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c084"),
+...         "first_name" : "surya",
+...         "last_name" : "bansal",
+...         "email" : "surya@gmail.com",
+...         "gender" : "male",
+...         "ip_address" : "127.001.25",
+...         "age" : "24"
+... }
+... {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c085"),
+...         "first_name" : "priya",
+...         "last_name" : "singh",
+...         "email" : "priya@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "127.20.25",
+...         "age" : "25",
+...         "eligible" : "true"
+... }
+... {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c086"),
+...         "first_name" : "anjali",
+...         "last_name" : "gautam",
+...         "email" : "anjali@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "127.20.26",
+...         "age" : "25",
+...         "eligible" : "true"
+... }
+... {
+...         "_id" : ObjectId("62265d0ab8dd9170a978c088"),
+...         "first_name" : "amrita",
+...         "last_name" : "goel",
+...         "email" : "amrita@gmail.com",
+...         "gender" : "female",
+...         "ip_address" : "120.27.28",
+...         "age" : "20"
+... }
